@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dropshielder Sticker Shop</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand-row">
+      <h1>Dropshielder <span id="shop-subtitle">sticker shop</span></h1>
+      <nav class="mode-tabs" aria-label="Experience mode">
+        <a id="tab-live" href="/">Live Shopify Endpoint</a>
+        <a id="tab-demo" href="/demo">Demo Version</a>
+      </nav>
+    </div>
+    <div id="demo-bar" hidden>
+      <span class="badge mock">DEMO MODE</span>
+      <label for="scenario">Demo scenario</label>
+      <select id="scenario"></select>
+    </div>
+  </header>
+
+  <main>
+    <section class="shop">
+      <h2 id="pick-heading">1. Pick a sticker</h2>
+      <div id="products" class="products"></div>
+
+      <h2>2. Check out</h2>
+      <form id="checkout">
+        <label>Name <input id="buyer" autocomplete="name" placeholder="Aoife O'Brien" maxlength="80"></label>
+        <label class="addon">
+          <input type="checkbox" id="want-scan" checked>
+          <span><strong>Scan this page before I pay (+$<span id="addon-price">0.50</span>)</strong><br>
+          Checks for new CVEs and signs of exploitation before the order completes.</span>
+        </label>
+        <button id="buy" type="submit">Buy</button>
+      </form>
+    </section>
+
+    <section class="result">
+      <h2>3. Scan</h2>
+      <p id="idle">Buy a sticker to start.</p>
+      <ol id="steps" class="steps"></ol>
+      <div id="verdict" hidden></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
