@@ -3,6 +3,7 @@
   --accent: #5a31f4; --safe: #12805c; --caution: #a15c00; --hold: #b3261e;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; font: 15px/1.5 system-ui, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
 header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 16px 24px; background: var(--card); border-bottom: 1px solid var(--line); }
 .brand-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }

@@ -53,10 +53,12 @@ async function init() {
     if (!selected) select(p, btn);
   }
 
-  // Scenario picker is shown in Demo Version or whenever at least one step runs on mock data.
-  if (IS_DEMO_ROUTE || config.steps.some((s) => s.source === "mock")) {
+  // Only show the Demo scenario picker on `/demo` (never on the Live Version `/`).
+  if (IS_DEMO_ROUTE) {
     for (const [id, label] of Object.entries(config.scenarios)) $("scenario").append(el("option", { value: id, textContent: label }));
     $("demo-bar").hidden = false;
+  } else {
+    $("demo-bar").remove();
   }
   $("checkout").addEventListener("submit", buy);
 }
@@ -73,11 +75,12 @@ async function buy(event) {
   $("steps").replaceChildren();
   $("verdict").hidden = true;
   try {
+    const scenarioEl = $("scenario");
     const payload = {
       product_id: selected.id,
       buyer_name: $("buyer").value,
       want_scan: $("want-scan").checked,
-      scenario: $("scenario").value || "clean",
+      scenario: scenarioEl ? (scenarioEl.value || "clean") : "clean",
       force_mock: IS_DEMO_ROUTE,
     };
     if (useShopifyCatalog && selected.variant_id) {
